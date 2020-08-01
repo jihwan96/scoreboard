@@ -2,6 +2,7 @@ import React from 'react';
 import './css/app.css';
 import {Header} from './components/Header';
 import {Player} from './components/Player';
+import {AddPlayerForm} from "./components/AddPlayerForm";
 
 // const Counter = (props) => {
 //     return (
@@ -65,6 +66,8 @@ class App extends React.Component {
                                 changeScore={this.handleChangeScore}/>
                     )
                 }
+
+                <AddPlayerForm/>
             </div>
         );
     }

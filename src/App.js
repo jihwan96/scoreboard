@@ -35,6 +35,10 @@ class App extends React.Component {
         });
     }
 
+    handleChangeScore = (id, delta) => {
+        console.log('handleChangeScore :: ' + id + ", " + delta);
+    }
+
     render() {
         return (
             <div className='scoreboard'>
@@ -44,7 +48,8 @@ class App extends React.Component {
                     this.state.players.map(player =>
                         <Player name={player.name} score={player.score} key={player.id} id={player.id}
                             // 2. function 을 props로 자식에게 내려준다.
-                                removePlayer={this.handleRemovePlayer}/>
+                                removePlayer={this.handleRemovePlayer}
+                                changeScore={this.handleChangeScore}/>
                     )
                 }
             </div>

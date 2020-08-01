@@ -31,18 +31,31 @@ class App extends React.Component {
             const players = [...prevState.players];
             const index = players.findIndex(player => player.id === id);
             players.splice(index, 1);
+
             return {players: players}
         });
     }
 
     handleChangeScore = (id, delta) => {
         console.log('handleChangeScore :: ' + id + ", " + delta);
+
+        //로직 구현
+        this.setState(prevState => {
+            const players = [...prevState.players];
+            players.forEach(player => {
+                if (player.id === id)
+                    player.score += delta;
+            });
+
+            return {players: players};
+
+        });
     }
 
     render() {
         return (
             <div className='scoreboard'>
-                <Header/>
+                <Header players={this.state.players}/>
 
                 {
                     this.state.players.map(player =>

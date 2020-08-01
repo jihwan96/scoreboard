@@ -3,6 +3,7 @@ import './css/app.css';
 import {Header} from './components/Header';
 import {Player} from './components/Player';
 import {AddPlayerForm} from "./components/AddPlayerForm";
+import _ from "lodash";
 
 // const Counter = (props) => {
 //     return (
@@ -53,6 +54,22 @@ class App extends React.Component {
         });
     }
 
+    handleAddPlayer = (name) => {
+        this.setState(prevState => {
+            const players = [...prevState.players];
+            let lastPlayer = _.maxBy(players, 'id');
+            let lastId = lastPlayer.id;
+            let player = {
+                name: name,
+                score: 0,
+                id : lastId + 1
+            };
+
+            players.push(player);
+            return {players:players};
+        })
+    }
+
     render() {
         return (
             <div className='scoreboard'>
@@ -67,7 +84,7 @@ class App extends React.Component {
                     )
                 }
 
-                <AddPlayerForm/>
+                <AddPlayerForm addPlayer={this.handleAddPlayer}/>
             </div>
         );
     }

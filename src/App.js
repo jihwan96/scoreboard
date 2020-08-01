@@ -39,8 +39,6 @@ class App extends React.Component {
     }
 
     handleChangeScore = (id, delta) => {
-        console.log('handleChangeScore :: ' + id + ", " + delta);
-
         //로직 구현
         this.setState(prevState => {
             const players = [...prevState.players];

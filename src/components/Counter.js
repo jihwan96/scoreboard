@@ -1,7 +1,6 @@
 import React from "react";
-import {changeScore, removePlayer} from "../redux/actions";
+import {changeScore} from "../redux/actions";
 import {connect} from "react-redux";
-import {Player} from "./Player";
 
 export class Counter extends React.Component {
 /*    constructor() {

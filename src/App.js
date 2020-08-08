@@ -2,7 +2,7 @@ import React from 'react';
 import './css/app.css';
 import {Header} from './components/Header';
 import {Player} from './components/Player';
-import {AddPlayerForm} from "./components/AddPlayerForm";
+import AddPlayerForm from "./components/AddPlayerForm";
 import _ from "lodash";
 import {connect} from "react-redux";
 

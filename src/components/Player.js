@@ -1,6 +1,6 @@
-import {Counter} from "./Counter";
+import Counter from "./Counter";
 import React from "react";
-import {removePlayer} from "../redux/actions";
+import {changeScore, removePlayer} from "../redux/actions";
 import {connect} from "react-redux";
 
 export const Player = (props) => {
@@ -10,7 +10,7 @@ export const Player = (props) => {
                 <button className='remove-player' onClick={() => props.removePlayer(props.id)}> x </button>
                 {props.name}
             </span>
-            <Counter score={props.score} id={props.id} changeScore={props.changeScore}/>
+            <Counter score={props.score} id={props.id}/>
         </div>
     );
 }

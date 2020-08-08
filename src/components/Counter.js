@@ -1,4 +1,7 @@
 import React from "react";
+import {changeScore, removePlayer} from "../redux/actions";
+import {connect} from "react-redux";
+import {Player} from "./Player";
 
 export class Counter extends React.Component {
 /*    constructor() {
@@ -20,3 +23,11 @@ export class Counter extends React.Component {
         );
     }
 }
+
+// mapFunctionToDispatchActionToProps << 하기 함수 풀네임
+const mapActionToProps = (dispatch) => ({
+    // 왼쪽은 props, 오른쪽은 (액션을 디스패치하는) function
+    changeScore: (id, delta) => dispatch(changeScore(id, delta))
+})
+
+export default connect(null, mapActionToProps)(Counter);

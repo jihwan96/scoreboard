@@ -1,5 +1,5 @@
 import _ from "lodash";
-import {ADD_PLAYER, REMOVE_PLAYER} from "../action_types";
+import {ADD_PLAYER, CHANGE_SCORE, REMOVE_PLAYER} from "../action_types";
 
 const playerInitlState = {
     players: [
@@ -16,11 +16,11 @@ export const playerReducer = (state = playerInitlState, action) => {
     switch (action.type) {
         case ADD_PLAYER:
             lastPlayer = _.maxBy(players, 'id');
-            lastId = lastPlayer.id;
+            lastId = lastPlayer.id + 1;
             player = {
                 name: action.name,
                 score: 0,
-                id: lastId + 1
+                id: lastId
             };
 
             players.push(player);
@@ -38,6 +38,18 @@ export const playerReducer = (state = playerInitlState, action) => {
                 ...state.players,
                 players
             }
+
+        case CHANGE_SCORE:
+            players.forEach(player => {
+                if (player.id === action.id)
+                    player.score += action.delta;
+            });
+
+            return {
+                ...state.players,
+                players
+            }
+
         default:
             return state;
     }

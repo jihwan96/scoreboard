@@ -1,4 +1,4 @@
-import {ADD_PLAYER, REMOVE_PLAYER} from "./action_types";
+import {ADD_PLAYER, CHANGE_SCORE, REMOVE_PLAYER} from "./action_types";
 
 // action creator (function): action을 동적으로 생성
 export const addPlayer = (name = '') => ({
@@ -9,4 +9,10 @@ export const addPlayer = (name = '') => ({
 export const removePlayer = (id = '') => ({
     type: REMOVE_PLAYER,
     id
+})
+
+export const changeScore = (id = '', delta = '') => ({
+    type: CHANGE_SCORE,
+    id,
+    delta
 })

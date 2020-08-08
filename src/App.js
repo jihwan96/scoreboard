@@ -45,7 +45,7 @@ class App extends React.Component {
         });
     }
 
-/*    handleAddPlayer = (name) => {
+    handleAddPlayer = (name) => {
         this.setState(prevState => {
             const players = [...prevState.players];
             let lastPlayer = _.maxBy(players, 'id');
@@ -59,7 +59,7 @@ class App extends React.Component {
             players.push(player);
             return {players:players};
         })
-    }*/
+    }
 
     render() {
         return (

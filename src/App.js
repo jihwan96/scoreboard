@@ -4,6 +4,7 @@ import {Header} from './components/Header';
 import {Player} from './components/Player';
 import {AddPlayerForm} from "./components/AddPlayerForm";
 import _ from "lodash";
+import {connect} from "react-redux";
 
 // const Counter = (props) => {
 //     return (
@@ -16,14 +17,6 @@ import _ from "lodash";
 // }
 
 class App extends React.Component {
-    state = {
-        players: [
-            {name: 'LDK', score: 0, id: 1},
-            {name: 'HONG', score: 0, id: 2},
-            {name: 'KIM', score: 0, id: 3},
-            {name: 'PARK', score: 0, id: 4}
-        ]
-    }
 
     handleRemovePlayer = (id) => {
         console.log('remove player :: ' + id);
@@ -71,10 +64,10 @@ class App extends React.Component {
     render() {
         return (
             <div className='scoreboard'>
-                <Header players={this.state.players}/>
+                <Header players={this.props.players}/>
 
                 {
-                    this.state.players.map(player =>
+                    this.props.players.map(player =>
                         <Player name={player.name} score={player.score} key={player.id} id={player.id}
                             // 2. function 을 props로 자식에게 내려준다.
                                 removePlayer={this.handleRemovePlayer}
@@ -88,4 +81,9 @@ class App extends React.Component {
     }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+    // 왼쪽이 props, 오른쪽 store의 state
+    players: state.playerReducer.players
+});
+
+export default connect(mapStateToProps, null)(App);

@@ -1,5 +1,7 @@
 import {Counter} from "./Counter";
 import React from "react";
+import {removePlayer} from "../redux/actions";
+import {connect} from "react-redux";
 
 export const Player = (props) => {
     return (
@@ -12,3 +14,11 @@ export const Player = (props) => {
         </div>
     );
 }
+
+// mapFunctionToDispatchActionToProps << 하기 함수 풀네임
+const mapActionToProps = (dispatch) => ({
+    // 왼쪽은 props, 오른쪽은 (액션을 디스패치하는) function
+    removePlayer: (id) => dispatch(removePlayer(id))
+})
+
+export default connect(null, mapActionToProps)(Player);

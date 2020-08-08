@@ -28,7 +28,7 @@ class AddPlayerForm extends React.Component {
         }
 
         this.props.addPlayer(this.state.value);
-        // this.setState({value: ''});
+        this.setState({value: ''});
 
     }
 
